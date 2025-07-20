@@ -16,14 +16,29 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PlayerResource extends Resource
 {
     protected static ?string $model = Player::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationGroup = 'Manajemen';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->label('Nama Pemain'),
+
+                Forms\Components\TextInput::make('position')
+                    ->label('Posisi'),
+
+                Forms\Components\Select::make('club_id')
+                    ->relationship('club', 'name')
+                    ->label('Club')
+                    ->required(),
+
+                Forms\Components\TextInput::make('salary')
+                    ->numeric()
+                    ->label('Gaji')
+                    ->required(),
             ]);
     }
 
@@ -31,18 +46,16 @@ class PlayerResource extends Resource
     {
         return $table
             ->columns([
-                //
-            ])
-            ->filters([
-                //
+                Tables\Columns\TextColumn::make('name')->label('Nama Pemain')->searchable(),
+                Tables\Columns\TextColumn::make('position')->label('Posisi'),
+                Tables\Columns\TextColumn::make('club.name')->label('Club'),
+                Tables\Columns\TextColumn::make('salary')->label('Gaji')->money('IDR', true),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 

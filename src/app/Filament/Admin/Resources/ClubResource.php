@@ -23,15 +23,26 @@ class ClubResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->label('Nama Club'),
+
+                Forms\Components\TextInput::make('location')
+                    ->label('Lokasi'),
+
+                Forms\Components\TextInput::make('stadium')
+                    ->label('Stadion'),
             ]);
     }
 
-    public static function table(Table $table): Table
+
+   public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')->label('Nama Club')->searchable(),
+                Tables\Columns\TextColumn::make('location')->label('Lokasi'),
+                Tables\Columns\TextColumn::make('stadium')->label('Stadion'),
             ])
             ->filters([
                 //
@@ -45,6 +56,7 @@ class ClubResource extends Resource
                 ]),
             ]);
     }
+
 
     public static function getRelations(): array
     {
