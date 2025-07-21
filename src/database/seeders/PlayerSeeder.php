@@ -16,7 +16,6 @@ class PlayerSeeder extends Seeder
         Player::create([
             'name' => 'Rizky Hidayat',
             'position' => 'Striker',
-            'number' => 9,
             'salary' => encrypt(15000000), // terenkripsi
             'club_id' => $jakartaUnited->id,
         ]);
@@ -24,7 +23,6 @@ class PlayerSeeder extends Seeder
         Player::create([
             'name' => 'Fajar Pratama',
             'position' => 'Goalkeeper',
-            'number' => 1,
             'salary' => encrypt(12000000),
             'club_id' => $bandungWarriors->id,
         ]);

@@ -11,16 +11,14 @@ class ClubSeeder extends Seeder
     {
         Club::create([
             'name' => 'Jakarta United',
-            'city' => 'Jakarta',
+            'location' => 'Jakarta',
             'stadium' => 'Stadion Merdeka',
-            'founded_year' => 1998,
         ]);
 
         Club::create([
             'name' => 'Bandung Warriors',
-            'city' => 'Bandung',
+            'location' => 'Bandung',
             'stadium' => 'Stadion Lautan Api',
-            'founded_year' => 2002,
         ]);
     }
 }
