@@ -63,7 +63,7 @@ class PlayerPolicy
      */
     public function forceDelete(User $user, Player $player): bool
     {
-        return $user->can('{{ ForceDelete }}');
+        return $user->can('force_delete_player');
     }
 
     /**
@@ -71,7 +71,7 @@ class PlayerPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('{{ ForceDeleteAny }}');
+        return $user->can('force_delete_any_player');
     }
 
     /**
@@ -79,7 +79,7 @@ class PlayerPolicy
      */
     public function restore(User $user, Player $player): bool
     {
-        return $user->can('{{ Restore }}');
+        return $user->can('restore_player');
     }
 
     /**
@@ -87,7 +87,7 @@ class PlayerPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('{{ RestoreAny }}');
+        return $user->can('restore_any_player');
     }
 
     /**
@@ -95,7 +95,7 @@ class PlayerPolicy
      */
     public function replicate(User $user, Player $player): bool
     {
-        return $user->can('{{ Replicate }}');
+        return $user->can('replicate_player');
     }
 
     /**
@@ -103,6 +103,6 @@ class PlayerPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('{{ Reorder }}');
+        return $user->can('reorder_player');
     }
 }

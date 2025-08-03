@@ -3,6 +3,12 @@
 namespace App\Providers;
 
 use App\Policies\ActivityPolicy;
+use App\Models\Club;
+use App\Models\Player;
+use App\Models\Employee;
+use App\Policies\ClubPolicy;
+use App\Policies\PlayerPolicy;
+use App\Policies\EmployeePolicy;
 use Filament\Actions\MountableAction;
 use Filament\Notifications\Livewire\Notifications;
 use Filament\Notifications\Notification;
@@ -23,6 +29,15 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
+    /**
+     * The policy mappings for the application.
+     */
+    protected $policies = [
+        Club::class => ClubPolicy::class,
+        Player::class => PlayerPolicy::class,
+        Employee::class => EmployeePolicy::class,
+    ];
 
     /**
      * Bootstrap any application services.
